@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Xamarin.Forms;
-using MVVMExample.viewmodels;
+﻿using Xamarin.Forms;
 
 namespace MVVMExample
 {
-	public partial class MainPage : ContentPage
+    public partial class MainPage : ContentPage
 	{
         PopUpClass popUp;
         public MainPage()
