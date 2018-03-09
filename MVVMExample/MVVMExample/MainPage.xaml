@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:MVVMExample"
+             xmlns:viewModels ="clr-namespace:MVVMExample.viewmodels"
+             x:Class="MVVMExample.MainPage">
+    <ContentPage.BindingContext>
+        <viewModels:PersonListViewModel x:Name="personListViewModel"/>
+    </ContentPage.BindingContext>
+    <StackLayout>
+        <StackLayout Orientation="Horizontal" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand">
+            <Label Text="First Name: " VerticalOptions="CenterAndExpand" HorizontalOptions="Start"/>
+            <Entry VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" x:Name="PersonEntry" Text="{Binding CurrentPerson.Name}" Placeholder="Enter first name"/>
+        </StackLayout>
+
+        <StackLayout Orientation="Horizontal" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand">
+            <Label Text="Last Name: " VerticalOptions="CenterAndExpand" HorizontalOptions="Start"/>
+            <Entry VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" x:Name="PersonLastEntry" Text="{Binding CurrentPerson.LastName}"  Placeholder="Enter last name"/>
+        </StackLayout>
+        
+        <Label x:Name="PersonLabel" VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand"  Text="{Binding FullName}"/>
+
+        <Button VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand" Margin="2" Text="Add Person" Command="{Binding CommandAddPerson}"/>
+        <Button Text="Show PopUp" Clicked="Button_Clicked" x:Name="PopButton"/>
+        <ListView x:Name="EntryListView" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ItemsSource="{Binding personList}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding Name}"></TextCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    
+    </StackLayout>
+</ContentPage>
